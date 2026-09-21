@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bank Portal</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__mark" id="bankMark">•</span>
+      <span class="topbar__name" id="bankName">Loading…</span>
+    </div>
+    <div class="topbar__meta">
+      <span id="bankCodeLabel" class="code-pill"></span>
+      <button id="logoutBtn" class="btn btn--ghost" hidden>Log out</button>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <!-- LOGIN -->
+    <section id="loginView" class="panel panel--narrow">
+      <h1 class="panel__title">Sign in</h1>
+      <p class="panel__sub">Demo accounts are pre-seeded. Pick one to sign in as that customer.</p>
+
+      <label class="field">
+        <span class="field__label">Account</span>
+        <select id="accountSelect" class="input"></select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">PIN</span>
+        <input id="pinInput" class="input" type="password" inputmode="numeric" maxlength="4" placeholder="1234" />
+      </label>
+
+      <button id="loginBtn" class="btn btn--primary">Sign in</button>
+      <p id="loginError" class="error" hidden></p>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboardView" class="dashboard" hidden>
+
+      <div class="panel balance-card">
+        <div class="balance-card__label">Available balance</div>
+        <div class="balance-card__amount"><span>₦</span><span id="balanceAmount">0.00</span></div>
+        <div class="balance-card__meta">
+          <span id="acctName"></span> · <span id="acctNumber" class="mono"></span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="panel__title">Send money</h2>
+        <p class="panel__sub">Choose the destination bank, enter the account number, and confirm the name before sending — same flow real transfer apps use.</p>
+
+        <label class="field">
+          <span class="field__label">Destination bank</span>
+          <select id="destBank" class="input"></select>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Destination account number</span>
+          <input id="destAccount" class="input mono" placeholder="0111234567" />
+        </label>
+
+        <div id="nameEnquiryResult" class="name-enquiry" hidden></div>
+
+        <label class="field">
+          <span class="field__label">Amount (₦)</span>
+          <input id="amountInput" class="input" type="number" min="1" step="0.01" placeholder="5000" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Narration</span>
+          <input id="narrationInput" class="input" placeholder="For rent" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Transaction PIN</span>
+          <input id="transferPin" class="input" type="password" inputmode="numeric" maxlength="4" placeholder="1234" />
+        </label>
+
+        <button id="transferBtn" class="btn btn--primary">Send transfer</button>
+        <p id="transferResult" class="result" hidden></p>
+      </div>
+
+      <div class="panel ledger">
+        <h2 class="panel__title">Transaction history</h2>
+        <div id="ledgerList" class="ledger__list"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
